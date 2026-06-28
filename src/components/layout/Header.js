@@ -1,7 +1,12 @@
+import Link from "next/link"
 
 function Header() {
   return (
-    <div>Header</div>
+    <div>
+      <Link href="/auth/login">
+      <button >ورود و ثبت نام</button>
+      </Link>
+    </div>
   )
 }
 
