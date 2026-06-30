@@ -1,21 +1,19 @@
-import Link from "next/link"
 import { useState } from "react"
+import AuthModal from "../modal/AuthModal"
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const modalHandler = () => {
-    setIsOpen(true)
+  const toggleModal = () => {
+    setIsOpen(isOpen => !isOpen)
   }
   return (
     <div>
-      <Link href="/auth/login">
-      <button onClick={modalHandler}>ورود و ثبت نام</button>
-    <div>
-      مودال
-    </div>
-      </Link>
-    </div>
+      <button onClick={toggleModal}>ورود و ثبت نام</button>
+
+      {/*Render modal of mobile and otp */}
+      {isOpen && <AuthModal onClose={() => setIsOpen(false)} />}
+    </div> 
   )
 }
 
