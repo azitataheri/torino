@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SendOtpForm from "../modules/SendOtpForm";
-import CheckOtpForm from "../modules/CheckOtpForm";
+import SendOtpForm from "@/components/modules/auth/SendOtpForm";
+import CheckOtpForm from "@/components/modules/auth/CheckOtpForm";
 
 function AuthModal({ onClose }) {
   const [step, setStep] = useState("mobile");
