@@ -6,6 +6,8 @@ const sendOtp =  (mobile) => {
 
 
 const checkOtp = ({mobile , code}) => {
+    console.log(mobile, code);
+    
     return api.post('/auth/check-otp', {mobile, code})
 }
 

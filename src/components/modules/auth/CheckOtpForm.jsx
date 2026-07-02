@@ -1,25 +1,109 @@
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useCheckOtpMutation } from "@/hooks/mutations";
-function CheckOtpForm({ code, setCode, mobile }) {
+import { IoClose } from "react-icons/io5";
+import { useForm, Controller } from "react-hook-form";
+import OtpInput from "react-otp-input";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import Button from "@/components/common/Button";
+import { setCookies } from "@/utils/cookies";
+
+const schema = yup.object({
+  code: yup
+    .string()
+    .required("کد الزامی است")
+    .length(6, "کد باید 6 رقمی باشد."),
+});
+
+function CheckOtpForm({ mobile, onClose }) {
+  {
+    /* Use router */
+  }
   const router = useRouter();
 
+  {
+    /*Mutate function */
+  }
   const { mutate } = useCheckOtpMutation();
-  const otpHandler = (e) => {
-    e.preventDefault();
+
+  {
+    /* Collaboration yup and RHF */
+  }
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      code: "",
+    },
+  });
+
+  {
+    /* Handle otp and send to dashboard after get success */
+  }
+  const otpHandler = (data) => {
     mutate(
-      { mobile, code },
-      { onSuccess: (data) => router.push("/dashboard") },
+      { mobile, code: data.code },
+      {
+        onSuccess: (data) => {
+          setCookies(data)
+          router.push("/dashboard");
+        },
+        onError: (error) => {
+          console.log("Error:", error);
+        },
+      },
     );
   };
   return (
-    <div>
-      <form onSubmit={otpHandler}>
-        <input
-          className="border-2"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
+    <div
+      dir="ltr"
+      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-70 left-1/2 bg-white rounded-[20] translate-x-[-50%] translaye-y-[-50%]"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <IoClose onClick={onClose} className="float-left m-3" />
+      <div className="text-center pt-15">
+        <p className="text-2xl">کد تایید را وارد کنید</p>
+        <p>کد تایید به شماره {mobile} ارسال شد</p>
+      </div>
+      <form onSubmit={handleSubmit(otpHandler)} className="flex flex-col p-7">
+        <Controller
+          name="code"
+          control={control}
+          render={({ field }) => (
+            <OtpInput
+              value={field.value}
+              onChange={field.onChange}
+              numInputs={6}
+              // shouldAutoFocus
+              containerStyle="flex justify-center gap-2 my-4 md:my-6"
+              inputStyle={{
+                width: "45px",
+                height: "45px",
+                textAlign: "center",
+                fontSize: "18px",
+                direction: "ltr",
+              }}
+              renderInput={(props) => (
+                <input
+                  {...props}
+                  input="numeric"
+                  className="border border-gray-400 rounded-lg"
+                />
+              )}
+            />
+          )}
         />
-        <button type="submit">ورود به تورینو</button>
+        <div></div>
+        {errors.code && (
+          <span className="text-pink-600 text-sm mt-2 text-right">
+            {errors.code.message}
+          </span>
+        )}
+        <Button value="ورود به تورینو" />
       </form>
     </div>
   );
