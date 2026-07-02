@@ -1,8 +1,8 @@
 import Image from "next/image";
-function ServerError() {
+function ServerErrorPage() {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-evenly">
+      <div className="flex flex-col md:flex-row items-center justify-evenly  mb-40 md:mb-0">
         <div className="order-last md:order-first">
           <ul className="">
             <li className="md:text-right text-4xl font-semibold">
@@ -25,4 +25,4 @@ function ServerError() {
   );
 }
 
-export default ServerError;
+export default ServerErrorPage;

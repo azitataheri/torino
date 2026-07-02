@@ -22,8 +22,8 @@ function Header() {
             <Image
               src="/images/hamburger.svg"
               alt="hamburger-menu"
-              width={20}
-              height={16}
+              width={25}
+              height={20}
             />
           </button>
 
@@ -59,8 +59,8 @@ function Header() {
               className="flex md:hidden"
               src="/images/sign in buttom.svg"
               alt="signin"
-              width={40}
-              height={40}
+              width={45}
+              height={45}
             />
         </div>
       </div>
