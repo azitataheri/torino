@@ -49,7 +49,7 @@ function SendOtpForm({ onSuccess, onClose, setMobile, setCode, setOtpSent }) {
 
   return (
     <div
-      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-70 left-1/2 bg-white rounded-[20] translate-x-[-50%] translaye-y-[-50%]"
+      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-30 md:top-70 left-1/2 bg-white rounded-[20] translate-x-[-50%] translaye-y-[-50%]"
       onClick={(e) => e.stopPropagation()}
     >
       <IoClose onClick={onClose} className="float-left m-3" />

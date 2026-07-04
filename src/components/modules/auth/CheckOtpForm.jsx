@@ -59,7 +59,9 @@ function CheckOtpForm({ mobile, onClose }) {
           queryClient.invalidateQueries({
             queryKey: ["user"],
           });
-          router.push("/dashboard");
+
+          onClose()
+          router.push("/");
         },
         onError: (error) => {
           console.log("Error:", error);
@@ -70,7 +72,7 @@ function CheckOtpForm({ mobile, onClose }) {
   return (
     <div
       dir="ltr"
-      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-70 left-1/2 bg-white rounded-[20] translate-x-[-50%] translate-y-[-50%]"
+      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-70 md:top-100 left-1/2 bg-white rounded-[20] translate-x-[-50%] translate-y-[-50%]"
       onClick={(e) => e.stopPropagation()}
     >
       <IoClose onClick={onClose} className="float-left m-3" />
