@@ -5,7 +5,7 @@ function NotFoundPage() {
     <div className="flex flex-col md:flex-row items-center justify-evenly mb-40 md:mb-0">
       <div className="order-last md:order-first">
         <p className="text-4xl font-semibold">صفحه مورد نظر یافت نشد!</p>
-        <button className="bg-[#D8FFE1] text-2xl text-primary px-8 py-3 rounded-lg mt-15 mx-5">
+        <button className="bg-[#D8FFE1] text-2xl text-primary px-7 md:px-10 py-4 rounded-2xl mt-15 block mx-auto md:mx-5">
           بازگشت به صفحه اصلی
         </button>
       </div>

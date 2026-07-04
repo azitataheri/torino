@@ -2,7 +2,8 @@ import {
     useMutation
 } from "@tanstack/react-query";
 import {
-    sendOtp,checkOtp
+    sendOtp,
+    checkOtp
 } from "@/services/auth";
 
 // Mutation for send otp code
@@ -29,7 +30,7 @@ const useCheckOtpMutation = () => {
             code
         })
         console.log('data is:', res.data)
-        return res
+        return res.data
     }
 
     return useMutation({

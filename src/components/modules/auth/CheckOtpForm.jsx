@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
-import { useCheckOtpMutation } from "@/hooks/mutations";
-import { IoClose } from "react-icons/io5";
 import { useForm, Controller } from "react-hook-form";
+import { IoClose } from "react-icons/io5";
 import OtpInput from "react-otp-input";
+
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { useQueryClient } from "@tanstack/react-query";
+import { useCheckOtpMutation } from "@/hooks/mutations";
+
 import Button from "@/components/common/Button";
-import { setCookies } from "@/utils/cookies";
 
 const schema = yup.object({
   code: yup
@@ -17,6 +19,7 @@ const schema = yup.object({
 });
 
 function CheckOtpForm({ mobile, onClose }) {
+  const queryClient = useQueryClient();
   {
     /* Use router */
   }
@@ -49,7 +52,13 @@ function CheckOtpForm({ mobile, onClose }) {
       { mobile, code: data.code },
       {
         onSuccess: (data) => {
-          setCookies(data)
+          {/* Set to cookies */}
+          document.cookie = `accessToken=${data.accessToken}; path=/; max-age=${1 * 24 * 60 * 60}`;
+          document.cookie = `refreshToken=${data.refreshToken}; path=/; max-age=${30 * 24 * 60 * 60}`;
+
+          queryClient.invalidateQueries({
+            queryKey: ["user"],
+          });
           router.push("/dashboard");
         },
         onError: (error) => {
@@ -61,7 +70,7 @@ function CheckOtpForm({ mobile, onClose }) {
   return (
     <div
       dir="ltr"
-      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-70 left-1/2 bg-white rounded-[20] translate-x-[-50%] translaye-y-[-50%]"
+      className="w-[358] h-[362] md:w-[550] md:h-[333] mx-auto absolute top-70 left-1/2 bg-white rounded-[20] translate-x-[-50%] translate-y-[-50%]"
       onClick={(e) => e.stopPropagation()}
     >
       <IoClose onClick={onClose} className="float-left m-3" />
@@ -78,7 +87,7 @@ function CheckOtpForm({ mobile, onClose }) {
               value={field.value}
               onChange={field.onChange}
               numInputs={6}
-              // shouldAutoFocus
+              shouldAutoFocus
               containerStyle="flex justify-center gap-2 my-4 md:my-6"
               inputStyle={{
                 width: "45px",
@@ -99,7 +108,7 @@ function CheckOtpForm({ mobile, onClose }) {
         />
         <div></div>
         {errors.code && (
-          <span className="text-pink-600 text-sm mt-2 text-right">
+          <span className="text-custome-red text-sm mt-2 text-right">
             {errors.code.message}
           </span>
         )}

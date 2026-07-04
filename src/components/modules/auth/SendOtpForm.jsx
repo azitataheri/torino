@@ -1,8 +1,10 @@
-import { useSendOtpMutation } from "@/hooks/mutations";
 import { IoClose } from "react-icons/io5";
 import { useForm } from "react-hook-form";
+
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useSendOtpMutation } from "@/hooks/mutations";
 
 import Button from "@/components/common/Button";
 
@@ -39,6 +41,9 @@ function SendOtpForm({ onSuccess, onClose, setMobile, setCode, setOtpSent }) {
         setCode(data.data.code);
         setOtpSent(true);
       },
+      onError:(error)=> {
+        console.log('Error is:', error);
+      }
     });
   };
 
@@ -64,7 +69,7 @@ function SendOtpForm({ onSuccess, onClose, setMobile, setCode, setOtpSent }) {
           {...register("mobile")}
         />
         {errors.mobile && (
-          <span className="text-pink-600 text-sm">{errors.mobile.message}</span>
+          <span className="text-custome-red text-sm">{errors.mobile.message}</span>
         )}
         <Button value="ارسال کد تایید" />
       </form>

@@ -11,4 +11,13 @@ const checkOtp = ({mobile , code}) => {
     return api.post('/auth/check-otp', {mobile, code})
 }
 
-export { sendOtp , checkOtp}
+
+const refreshTokenApi =(refreshToken) =>{
+   return api.post('/auth/refresh-token', {refreshToken})
+}
+
+
+const getProfile =  () => {
+    return api.get('/user/profile')
+}
+export { sendOtp , checkOtp, refreshTokenApi, getProfile}

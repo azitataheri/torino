@@ -6,21 +6,38 @@
   --foreground: #171717;
 }
 
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'yekanbakh';
+}
+
+
 @font-face {
   font-family: 'yekanbakh';
-  src: url("/fonts/YekanBakhMedium.woff") format("woff");
+  src: url("/fonts/YekanBakh-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'VazirFdWol';
+  src: url("/fonts/Vazir-FD-WOL.woff2") format("woff2");
 }
 
 @theme {
-  --font-bakh: "yekanbakh", sans-serif;
+  --font-bakh: "yekanbakh";
+  --font-number: "VazirFdWol";
   /* --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono); */
   --color-primary: #28A745;
   --color-secondary: #10411B;
-  --text-color: #282828
+  --text-color: #282828;
+  --color-custome-red: #D40000;
+  --color-custome-gray: #F4F4F4
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -29,8 +46,3 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'yekanbakh';
-}

@@ -90,7 +90,7 @@ function Footer() {
                 alt="Torino"
               />
 
-              <p className="mt-4 text-[15px]">تلفن پشتیبانی: 021-8574</p>
+              <p className="mt-4 text-[15px]">تلفن پشتیبانی: 0218574</p>
             </div>
 
             <div className="grid grid-cols-3 md:grid-cols-5 gap-4 mt-8">
