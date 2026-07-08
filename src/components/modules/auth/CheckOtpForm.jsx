@@ -114,7 +114,7 @@ function CheckOtpForm({ mobile, onClose }) {
             {errors.code.message}
           </span>
         )}
-        <Button value="ورود به تورینو" />
+        <Button> ورود به تورینو </Button>
       </form>
     </div>
   );

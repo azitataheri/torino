@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "@/services/auth";
+import { getTours } from "@/services/tours";
 
+// For get users
 const useUser = () => {
     return useQuery({
         queryKey: ["user"],
@@ -20,4 +22,23 @@ const useUser = () => {
 }
 
 
-export {useUser}
+//For tours
+const useTours = () => {
+    return useQuery({
+        queryKey: ['tours'],
+        queryFn: async()=> {
+            try{
+                const res= await getTours()
+                return res.data
+            }
+            catch(error){
+                 console.log('error:', err);
+                throw error
+            }
+        },
+
+        retry: false
+    })
+}
+
+export {useUser, useTours}

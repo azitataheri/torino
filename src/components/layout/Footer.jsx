@@ -59,7 +59,7 @@ import Image from "next/image";
 function Footer() {
   return (
     <footer>
-      <div className="max-w-7xl mx-auto px-4 py-8 border-t border-dashed md:border-solid border-gray-300">
+      <div className="md:w-[1600px] mx-auto px-4 py-8 border-t border-dashed md:border-solid border-gray-300">
         <div className="flex flex-col md:flex-row justify-between gap-10">
           {/* Links */}
           <div className="w-full md:w-1/2 flex justify-around md:justify-start md:gap-24">
