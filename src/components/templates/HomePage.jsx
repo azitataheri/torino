@@ -31,7 +31,7 @@ function HomePage({ tours }) {
           <p className="text-3xl pb-4">همه تورها</p>
           <ToursList tours={tours} />
         </div>
-        {/* Shoppping by tourino */}
+        {/* Shoppping by torino */}
         <div className="flex-wrap md:flex mt-20 border border-gray-300 rounded-lg">
           <div className="relative flex-wrap md:flex justify-around bg-primary w-full md:w-3/4 md:pt-8 rounded-r-lg">
             <div className="w-1/2 md:w-auto py-9 pr-5 md:pr-0 md:space-y-10">
@@ -68,8 +68,8 @@ function HomePage({ tours }) {
             </div>
           </div>
         </div>
-        {/* Slider: Why tourino */}
-        
+        {/* Slider: Why torino */}
+
       </div>
     </div>
   );
