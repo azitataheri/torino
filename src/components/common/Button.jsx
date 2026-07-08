@@ -19,7 +19,7 @@ function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`bg-primary rounded-[6] text-white cursor-pointer px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+      className={`bg-primary rounded-[6] text-white cursor-pointer px-4 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
     >
       {children}
     </button>

@@ -1,7 +1,9 @@
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
 
-function OriginDropDown({ tours , value, setValue}) {
+import { formatCities } from "@/utils/format";
+
+function OriginDropDown({ tours, value, setValue }) {
   const [isOpen, setIsOpen] = useState(false);
 
   {
@@ -17,10 +19,10 @@ function OriginDropDown({ tours , value, setValue}) {
 
   return (
     <div
-      className="relative bg-red-500 w-58"
+      className="relative w-full md:w-58 border border-gray-300 md:border-0  rounded-xl"
       onClick={() => setIsOpen((prev) => !prev)}
     >
-      <div className="flex items-center border-l border-gray-300 px-3">
+      <div className="flex items-center border-gray-300 px-3">
         <Image
           className="ml-3"
           src="/images/location.svg"
@@ -28,17 +30,21 @@ function OriginDropDown({ tours , value, setValue}) {
           height={20}
           alt="location"
         />
-        {value ? value.name : "مبدا"}
+        {value ? formatCities(value.name) : "مبدا"}
       </div>
       {isOpen ? (
         <div className="absolute top-15 w-full border-2">
           {origins.map((origin) => (
-            <p className="cursor-pointer" key={origin.id} onClick={(e) => {
-              e.stopPropagation();
-            setValue('origin', origin);
-              setIsOpen(false);
-            }}>
-              {origin.name}
+            <p
+              className="cursor-pointer"
+              key={origin.id}
+              onClick={(e) => {
+                e.stopPropagation();
+                setValue("origin", origin);
+                setIsOpen(false);
+              }}
+            >
+              {formatCities(origin.name)}
             </p>
           ))}
         </div>

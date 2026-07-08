@@ -27,15 +27,49 @@ body {
 @theme {
   --font-bakh: "yekanbakh";
   --font-number: "VazirFdWol";
-  /* --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono); */
   --color-primary: #28A745;
   --color-secondary: #10411B;
   --text-color: #282828;
   --color-custome-red: #D40000;
   --color-custome-gray: #F4F4F4;
+}
+
+
+/*  Customise zaman datepicker */
+.zm-DaysButton {
+  border-radius: 5px !important;
+}
+
+.zm-Header {
+  background-color: transparent !important;
+}
+
+.zm-MonthYearButton {
+  background-color: #28A745 !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+}
+
+.css-137m4ck {
+  border-radius: 10px !important;
+}
+
+.css-1osmdps {
+  border-bottom: none !important;
+}
+
+.css-1e0sis0 .rdp__overlay {
+  background-color: transparent !important;
+}
+
+.css-1e0sis0{
+  position: absolute !important;
+  top: 50px !important
+}
+@media (max-width: 768px) {
+  .css-1e0sis0{
+  position: absolute !important;
+  top: 180px !important;
 }
 
 
@@ -46,3 +80,6 @@ body {
   }
 }
 
+
+
+}

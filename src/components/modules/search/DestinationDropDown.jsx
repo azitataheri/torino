@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { useState } from "react";
-function DestinationDropDown({tours, value ,setValue }) {
+import { formatCities } from "@/utils/format";
+
+function DestinationDropDown({ tours, value, setValue }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  
   {
     /** Filter tours and remove repetitive destiantion */
   }
@@ -16,10 +19,10 @@ function DestinationDropDown({tours, value ,setValue }) {
 
   return (
     <div
-      className="relative bg-yellow-500 w-58"
+      className="relative w-full md:w-58 border border-gray-300 md:border-none rounded-xl"
       onClick={() => setIsOpen((prev) => !prev)}
     >
-      <div className="flex items-center border-l border-gray-300 px-3">
+      <div className="flex items-center md:border-r md:border-l md:border-gray-300 px-3">
         <Image
           className="ml-3"
           src="/images/location.svg"
@@ -27,18 +30,22 @@ function DestinationDropDown({tours, value ,setValue }) {
           height={20}
           alt="location"
         />
-        {value ? value.name : 'مقصد'}
+        {value ? formatCities(value.name) : "مقصد"}
       </div>
       {isOpen ? (
         <div className="absolute top-15 w-full border-2">
           {destinations.map((destination) => (
-            <p className="cursor-pointer" key={destination.id} onClick={
-              (e) => {
-                e.stopPropagation()
-                setValue('destination', destination);
-                setIsOpen(false)
-              }
-            }>{destination.name}</p>
+            <p
+              className="cursor-pointer"
+              key={destination.id}
+              onClick={(e) => {
+                e.stopPropagation();
+                setValue("destination", destination);
+                setIsOpen(false);
+              }}
+            >
+              {formatCities(destination.name)}
+            </p>
           ))}
         </div>
       ) : null}

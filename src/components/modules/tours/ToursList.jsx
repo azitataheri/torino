@@ -1,12 +1,14 @@
-function ToursList({tours}) {
-
+import TourCard from "./TourCard";
+function ToursList({ tours }) {
   return (
     <div>
-      {tours.map((tour) => (<p key="tour.id">
-        {tour.origin.name}
-      </p>))}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {tours.map((tour) => (
+          <TourCard key={tour.id} {...tour} />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default ToursList
+export default ToursList;

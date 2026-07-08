@@ -2,35 +2,23 @@ import Image from "next/image";
 import { DatePicker } from "zaman";
 
 function DateBox({ setValue }) {
-  const formatFa = (date) => {
-    return new Date(date).toLocaleDateString("fa-IR");
-  };
   return (
-    <div className="relative flex items-center border-r border-gray-300 w-1/2 px-1 bg-green-600">
-      <div className="flex items-center">
-        <Image
-          className="ml-3"
-          src="/images/calendar.svg"
-          width={20}
-          height={20}
-          alt="date"
-        />
-        تاریخ
+    <div className="relative flex items-center w-full rounded-xl md:w-1/2 border border-gray-300 md:border-none md:border-r px-5">
+      <div className="flex items-center mx-auto md:mx-0 gap-2 text-gray-700">
+        <Image src="/images/calendar.svg" width={20} height={20} alt="date" />
+        <span>تاریخ</span>
       </div>
-      <div className="absolute top-5 ">
-        <DatePicker
+      <DatePicker
         range
-          locale="fa"
-          direction="rtl"
-          onChange={(e) => {
-            console.log('date picker is:', e);
-            
-                  setValue('from', e.from)
-                  setValue('to', e.to)
-
-          }}
-        />
-      </div>
+        locale="fa"
+        direction="rtl"
+        inputClass="absolute inset-0 opacity-0 cursor-pointer"
+        accentColor="#28A745"
+        onChange={(e) => {
+          setValue("from", e.from);
+          setValue("to", e.to);
+        }}
+      />
     </div>
   );
 }
