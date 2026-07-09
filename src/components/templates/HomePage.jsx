@@ -1,12 +1,20 @@
 import Image from "next/image";
-
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import SearchBox from "../modules/search/SearchBox";
 import ToursList from "../modules/tours/ToursList";
 import HeroSlider from "../modules/slider/HeroSlider";
 
 function HomePage({ tours }) {
-  console.log("tours from ssr:", tours);
+  const router = useRouter();
+  const { reset } = useForm();
 
+  const clearFilters = () => {
+    reset();
+    router.push({
+      pathname: "/",
+    });
+  };
   return (
     <div>
       {/* Banner of home */}
@@ -18,7 +26,7 @@ function HomePage({ tours }) {
         alt="banner"
       />
 
-      <div className="mx-auto md:w-340">
+      <div className="mx-auto md:w-400">
         <p className="text-center text-[28px] pt-5 text-gray-600 font-medium">
           <span className="text-primary">تورینو</span> برگزار کننده بهترین تور
           های داخلی و خارجی
@@ -29,7 +37,16 @@ function HomePage({ tours }) {
         </div>
         {/* Tours list */}
         <div className="mt-40">
-          <p className="text-3xl pb-4">همه تورها</p>
+          <div className="flex justify-between">
+            <p className="text-3xl pb-4">همه تورها</p>
+            <button
+              className="border border-gray-300 text-gray-700 bg-white rounded-lg h-10
+               px-2 text-md cursor-pointer shdow-md "
+              onClick={clearFilters}
+            >
+              حذف فیلتر ها
+            </button>
+          </div>
           <ToursList tours={tours} />
         </div>
         {/* Shoppping by torino */}
@@ -70,7 +87,7 @@ function HomePage({ tours }) {
           </div>
         </div>
         {/* Slider: Why torino */}
-        <div className="md:flex items-start justify-between md:w-300 md:mt-10">
+        <div className="md:flex items-start justify-between md:w-360 md:mt-10">
           <div>
             <div className="flex items-center pt-30">
               <div className="flex justify-center items-center text-2xl text-white w-10 h-10 rounded-full bg-secondary pt-1">
@@ -103,16 +120,48 @@ function HomePage({ tours }) {
             <HeroSlider />
           </div>
         </div>
-
       </div>
-        {/* Up footer */}
-        <div className="grid grid-cols-3 gap-3 border border-t">
-          <div className="">
-            <Image />
+      {/* Up footer */}
+      <div className="border-t border-gray-300">
+        <div className="grid grid-1 md:grid-cols-3 gap-20 md:w-400 mx-auto pt-5 leading-8">
+          <div className="flex items-center">
+            <Image
+              src="/images/Ticket Discount.png"
+              width={100}
+              height={100}
+              alt="support"
+            />
+            <div className="pr-3">
+              <p className="font-semibold">بصرفه ترین قیمت</p>
+              <p>بصرفه ترین و ارزان ترین قیمت تور را از ما بخواهید.</p>
+            </div>
           </div>
-          <div className=""></div>
-          <div className=""></div>
+          <div className="flex items-center">
+            <Image
+              src="/images/support.png"
+              width={100}
+              height={100}
+              alt="support"
+            />
+            <div className="pr-3">
+              <p className="font-semibold">پشتیبانی</p>
+              <p>پشتیبانی و همراهی 24 ساعته در تمامی مراحل سفر شما.</p>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <Image
+              src="/images/satisfy.png"
+              width={100}
+              height={100}
+              alt="support"
+            />
+            <div className="pr-3">
+              <p className="font-semibold">رضایت کاربران</p>
+              <p>رضایت بیش از 10هزار کاربر از تور های ما. </p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
   );
 }

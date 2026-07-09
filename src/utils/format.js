@@ -63,7 +63,7 @@ const formatHotel = (options) => {
 
 // Price formatter
 const formatPrice = (price) => {
-    return (price * 1000).toLocaleString("fa-IR") + " تومان"
+    return (price * 1000).toLocaleString("fa-IR") 
 }
 
 export {

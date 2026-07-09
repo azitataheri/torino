@@ -36,8 +36,9 @@ function TourCard({
         </p>
       </div>
       <div className="flex justify-between items-center border-t border-gray-300 p-2">
-        <Button className="py-0.5">رزرو</Button>
-        <span>{formatPrice(price)}</span>
+        <Button className="py-0.5 px-9 md:px-6">رزرو</Button>
+        <div>
+          <span className="text-complementry">{formatPrice(price)}</span><span className="text-color pr-2">تومان</span></div>
       </div>
     </div>
   );
