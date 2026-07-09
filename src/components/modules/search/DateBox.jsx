@@ -15,6 +15,8 @@ function DateBox({ setValue }) {
         inputClass="absolute inset-0 opacity-0 cursor-pointer"
         accentColor="#28A745"
         onChange={(e) => {
+          console.log(e.from, e.to);
+          
           setValue("from", e.from);
           setValue("to", e.to);
         }}

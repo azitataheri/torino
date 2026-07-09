@@ -5,7 +5,6 @@ import { formatCities } from "@/utils/format";
 function DestinationDropDown({ tours, value, setValue }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  
   {
     /** Filter tours and remove repetitive destiantion */
   }
@@ -25,7 +24,7 @@ function DestinationDropDown({ tours, value, setValue }) {
       <div className="flex items-center md:border-r md:border-l md:border-gray-300 px-3">
         <Image
           className="ml-3"
-          src="/images/location.svg"
+          src="/images/global-search.svg"
           width={20}
           height={20}
           alt="location"
@@ -33,10 +32,12 @@ function DestinationDropDown({ tours, value, setValue }) {
         {value ? formatCities(value.name) : "مقصد"}
       </div>
       {isOpen ? (
-        <div className="absolute top-15 w-full border-2">
+        <div className="absolute top-16 w-full border bg-white border-gray-300 rounded-lg">
+          <div className="bg-[#F8F8F8] rounded-t-lg pr-1">پرتردد</div>
+
           {destinations.map((destination) => (
-            <p
-              className="cursor-pointer"
+            <div
+              className="flex items-center cursor-pointer pr-2 border-b border-gray-100"
               key={destination.id}
               onClick={(e) => {
                 e.stopPropagation();
@@ -44,8 +45,15 @@ function DestinationDropDown({ tours, value, setValue }) {
                 setIsOpen(false);
               }}
             >
+              <Image
+                className="ml-3"
+                src="/images/global-search.svg"
+                width={20}
+                height={20}
+                alt="location"
+              />
               {formatCities(destination.name)}
-            </p>
+            </div>
           ))}
         </div>
       ) : null}

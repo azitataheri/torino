@@ -1,21 +1,10 @@
 import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 import SearchBox from "../modules/search/SearchBox";
 import ToursList from "../modules/tours/ToursList";
 import HeroSlider from "../modules/slider/HeroSlider";
 
 function HomePage({ tours }) {
-  const router = useRouter();
-  const { reset } = useForm();
-
-  const clearFilters = () => {
-    reset();
-    router.push({
-      pathname: "/",
-    });
-  };
-  return (
+    return (
     <div>
       {/* Banner of home */}
       <Image
@@ -37,15 +26,8 @@ function HomePage({ tours }) {
         </div>
         {/* Tours list */}
         <div className="mt-40">
-          <div className="flex justify-between">
+          <div>
             <p className="text-3xl pb-4">همه تورها</p>
-            <button
-              className="border border-gray-300 text-gray-700 bg-white rounded-lg h-10
-               px-2 text-md cursor-pointer shdow-md "
-              onClick={clearFilters}
-            >
-              حذف فیلتر ها
-            </button>
           </div>
           <ToursList tours={tours} />
         </div>

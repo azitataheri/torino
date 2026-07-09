@@ -33,10 +33,11 @@ function OriginDropDown({ tours, value, setValue }) {
         {value ? formatCities(value.name) : "مبدا"}
       </div>
       {isOpen ? (
-        <div className="absolute top-15 w-full border-2">
+        <div className="absolute top-16 w-full border bg-white border-gray-300 rounded-lg">
+          <div className="bg-[#F8F8F8] rounded-t-lg pr-1">پرتردد</div>
           {origins.map((origin) => (
-            <p
-              className="cursor-pointer"
+            <div
+              className="flex items-center cursor-pointer pr-2 border-b border-gray-100"
               key={origin.id}
               onClick={(e) => {
                 e.stopPropagation();
@@ -44,8 +45,15 @@ function OriginDropDown({ tours, value, setValue }) {
                 setIsOpen(false);
               }}
             >
+              <Image
+                className="ml-3"
+                src="/images/location.svg"
+                width={20}
+                height={20}
+                alt="location"
+              />
               {formatCities(origin.name)}
-            </p>
+            </div>
           ))}
         </div>
       ) : null}

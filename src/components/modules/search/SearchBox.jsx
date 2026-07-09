@@ -26,6 +26,7 @@ function SearchBox({ tours }) {
         endDate: data.to?.toISOString(),
       },
     });
+
   };
 
   return (

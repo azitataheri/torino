@@ -60,7 +60,7 @@ export default function CardSlider() {
                 left: 0,
                 width: CARD_WIDTH,
                 height: CARD_HEIGHT,
-                borderRadius: 30,
+                borderRadius: 55,
                 overflow: "hidden",
                 boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
                 cursor: isActive ? "default" : "pointer",
