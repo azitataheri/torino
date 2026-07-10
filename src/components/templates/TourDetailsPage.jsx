@@ -1,35 +1,42 @@
 import Image from "next/image";
-import {
-  formatDate,
-  formatDuration,
-  formatVehicle,
-  formatHotel,
-  formatPrice,
-  calculateDuration,
-} from "@/utils/format";
+import { useUser } from "@/hooks/queries";
+
+import { formatDuration, formatPrice } from "@/utils/format";
 import Button from "../common/Button";
 import TourItems from "../common/TourItems";
+import { useAuthModal } from "@/context/AuthModalContext";
 
 function TourDetailsPage({ tour }) {
+  const {setIsOpen} = useAuthModal()
+  const {data:user} = useUser();
+
+  const reserveHandler = () => {
+    if(!user){
+      setIsOpen(true)
+      return
+    }
+  }
   return (
-    <div className="md:bg-[#F8F8F8] overflow-hidden">
-      <div className="bg-white md:border md:w-400 mt-10 mx-auto">
-        <div className="flex-wrap md:flex py-8 px-4">
-          <div className="md:w-1/3">
+    <div className="md:bg-[#F8F8F8] overflow-hidden md:py-20">
+      <div className="bg-white md:border md:border-gray-300 md:w-400 mx-auto rounded-xl md:px-5 py-7">
+        <div className="grid grid-1 md:grid-cols-5 gap-6">
+          <div className="col-span-1 md:col-span-2">
             <Image
               src={tour.image}
-              width={397}
-              height={265}
+              width={390}
+              height={280}
               alt="tour image"
-              style={{ width: "100%", height: "100%", borderRadius: "20px" }}
+              style={{ width: "100%", borderRadius: "20px" }}
             />
           </div>
-          <div className="flex flex-col md:w-2/3 space-y-20">
+          <div className="col-span-1 md:col-span-3 space-y-20">
             <div className="flex justify-between md:flex-col">
-              <span className="text-3xl font-semibold">{tour.title} </span>
-              <span className="text-xl">{formatDuration(tour.startDate, tour.endDate)}</span>
+              <span className="text-3xl font-bold">{tour.title} </span>
+              <span className="text-xl md:pt-5">
+                {formatDuration(tour.startDate, tour.endDate)}
+              </span>
             </div>
-            <div className="md:flex  space-x-10 text-xl">
+            <div className="flex space-x-10  text-xs md:text-lg text-gray-500">
               <div className="flex items-center">
                 <Image
                   src="/images/user-tick.svg"
@@ -37,7 +44,7 @@ function TourDetailsPage({ tour }) {
                   height={20}
                   alt="leader"
                 />
-                <span> تور لیدر از مبدا</span>
+                <span className="pr-2"> تور لیدر از مبدا</span>
               </div>
               <div className="flex items-center">
                 <Image
@@ -46,7 +53,7 @@ function TourDetailsPage({ tour }) {
                   height={20}
                   alt="leader"
                 />
-                <span>برنامه سفر</span>
+                <span className="pr-2">برنامه سفر</span>
               </div>
               <div className="flex items-center">
                 <Image
@@ -55,21 +62,21 @@ function TourDetailsPage({ tour }) {
                   height={20}
                   alt="leader"
                 />
-                <span>تضمین کیفیت</span>
+                <span className="pr-2">تضمین کیفیت</span>
               </div>
             </div>
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <div>
                 <span className="text-complementry text-2xl">
                   {formatPrice(tour.price)}
                 </span>
                 <span className="text-color pr-2">تومان</span>
               </div>
-              <Button>رزرو و خرید</Button>
+              <Button className="leading-12 px-14" onClick={reserveHandler}>رزرو و خرید</Button>
             </div>
           </div>
         </div>
-        <div className="flex justify-start leading-10 py-5">
+        <div className="flex justify-start md:leading-12 mt-10 md:py-5 overflow-y-hidden md:overflow-y-hidden overflow-x-scroll md:overflow-x-hidden">
           <TourItems tour={tour} />
         </div>
       </div>

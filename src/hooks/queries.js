@@ -16,7 +16,6 @@ const useUser = () => {
                 throw err
             }
         },
-
         retry: false
     })
 }

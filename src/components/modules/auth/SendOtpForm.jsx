@@ -71,7 +71,7 @@ function SendOtpForm({ onSuccess, onClose, setMobile, setCode, setOtpSent }) {
         {errors.mobile && (
           <span className="text-custome-red text-sm">{errors.mobile.message}</span>
         )}
-        <Button> ارسال کد تایید</Button>
+        <Button type="submit"> ارسال کد تایید</Button>
       </form>
     </div>
   );

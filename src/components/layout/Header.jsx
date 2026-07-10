@@ -5,9 +5,10 @@ import { useUser } from "@/hooks/queries";
 import AuthModal from "../modules/auth/AuthModal";
 import Menu from "../modules/Menu";
 import DropDownMenu from "../modules/auth/DropDownMenu";
+import { useAuthModal } from "@/context/AuthModalContext";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const {setIsOpen} = useAuthModal()
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
   const { data: user, isLoading, error } = useUser();
@@ -120,14 +121,7 @@ function Header() {
         </div>
       )}
 
-      {/*Render modal of mobile and otp */}
-      {isOpen && (
-        <AuthModal
-          onClose={() => setIsOpen(false)}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
-      )}
+     
     </div>
   );
 }

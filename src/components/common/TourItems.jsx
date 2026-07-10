@@ -1,12 +1,8 @@
 import Image from "next/image";
 import {
-  formatDate,
   formatCompleteDate,
   formatVehicle,
-  formatHotel,
-  formatPrice,
   formatCities,
-  calculateDuration,
 } from "@/utils/format";
 
 function TourItems({ tour }) {
@@ -54,16 +50,16 @@ function TourItems({ tour }) {
       {items.map((item, index) => (
         <div
           key={index}
-          className={`${item.border ? "border-l border-gray-200" : ""} w-full mr-10`}
+          className={`${item.border ? "md:border-l md:border-gray-200" : ""} md:w-full md:mr-10 mt-10 md:mt-0`}
         >
-          <ul className="text-center pr-0">
+          <ul className="text-center pr-0 w-32 md:w-full text-xs md:text-base leading-9">
             <li className="flex items-center justify-center">
               <span>
                 <Image src={item.img} width={20} height={20} alt="item icon" />
               </span>
-              <span>{item.label}</span>
+              <span className="text-gray-500 pr-2">{item.label}</span>
             </li>
-            <li>{item.value}</li>
+            <li className="font-semibold">{item.value}</li>
           </ul>
         </div>
       ))}

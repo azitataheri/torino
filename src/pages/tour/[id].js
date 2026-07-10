@@ -13,7 +13,7 @@ export default TourDetails
 
 
 export async function getServerSideProps({params}) {
-    console.log('params is:', params);
+    console.log('params is:', params.id);
     
     const {data} = await getTourById(params.id)
     console.log('data is', data);
