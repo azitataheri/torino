@@ -6,6 +6,22 @@ const formatDate = (date) => {
     })
 }
 
+// Format complete date
+const formatCompleteDate = (date) => {
+    return new
+    Date(date).toLocaleDateString("fa-IR", {
+        year: "numeric",
+        month: "long",
+        day: 'numeric'
+    })
+}
+
+// Format count of day and night
+const formatDuration = (startDate, endDate) => {
+    const days = (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)
+    return `${days} روز - ${days -1 }شب `
+}
+
 // Format cities
 const formatCities = (city) => {
     const cities = {
@@ -18,7 +34,7 @@ const formatCities = (city) => {
         Mazandaran: 'مازنداران',
         Gilan: 'گیلان',
         Italy: 'ایتالیا'
-            }
+    }
     return cities[city] || city
 }
 // Format vehicle
@@ -63,11 +79,13 @@ const formatHotel = (options) => {
 
 // Price formatter
 const formatPrice = (price) => {
-    return (price * 1000).toLocaleString("fa-IR") 
+    return (price * 1000).toLocaleString("fa-IR")
 }
 
 export {
     formatDate,
+    formatCompleteDate,
+    formatDuration,
     formatVehicle,
     formatHotel,
     formatPrice,

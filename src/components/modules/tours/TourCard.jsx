@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/common/Button";
+import Link from "next/link";
 import {
   formatDate,
   formatVehicle,
@@ -10,6 +11,7 @@ import {
 
 
 function TourCard({
+  id,
   title,
   image,
   fleetVehicle,
@@ -36,7 +38,9 @@ function TourCard({
         </p>
       </div>
       <div className="flex justify-between items-center border-t border-gray-300 p-2">
-        <Button className="py-0.5 px-9 md:px-6">رزرو</Button>
+        <Button className="py-0.5 px-9 md:px-6">
+          <Link href={`/tour/${id}`}>رزرو</Link>
+        </Button>
         <div>
           <span className="text-complementry">{formatPrice(price)}</span><span className="text-color pr-2">تومان</span></div>
       </div>
