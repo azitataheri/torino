@@ -5,6 +5,11 @@ import {
     sendOtp,
     checkOtp
 } from "@/services/auth";
+import {
+    addToBasket
+} from "@/services/tours";
+
+
 
 // Mutation for send otp code
 const useSendOtpMutation = () => {
@@ -19,7 +24,7 @@ const useSendOtpMutation = () => {
 }
 
 
-// mutation for checck otp code
+// Mutation for checck otp code
 const useCheckOtpMutation = () => {
     const checkOtpMutation = async ({
         mobile,
@@ -38,7 +43,15 @@ const useCheckOtpMutation = () => {
     })
 }
 
+
+// Mutation for put tour to basket
+const useAddToBasketMutation = () => {
+    return useMutation({
+        mutationFn: addToBasket
+    })
+}
 export {
     useSendOtpMutation,
-    useCheckOtpMutation
+    useCheckOtpMutation,
+    useAddToBasketMutation
 }

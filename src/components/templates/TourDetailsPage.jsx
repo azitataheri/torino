@@ -5,17 +5,32 @@ import { formatDuration, formatPrice } from "@/utils/format";
 import Button from "../common/Button";
 import TourItems from "../common/TourItems";
 import { useAuthModal } from "@/context/AuthModalContext";
+import { useAddToBasketMutation } from "@/hooks/mutations";
+
+
 
 function TourDetailsPage({ tour }) {
   const {setIsOpen} = useAuthModal()
   const {data:user} = useUser();
 
+  const {mutate} = useAddToBasketMutation()
+
   const reserveHandler = () => {
+    console.log('user is', user);
+    
     if(!user){
       setIsOpen(true)
       return
     }
+
+    mutate(tour.id, {
+      onSuccess: () => { console.log('تور له سبذ خرید اضافه شد');},
+      onError: (error) =>{console.log(error);
+      }
+    })
   }
+
+
   return (
     <div className="md:bg-[#F8F8F8] overflow-hidden md:py-20">
       <div className="bg-white md:border md:border-gray-300 md:w-400 mx-auto rounded-xl md:px-5 py-7">
@@ -72,7 +87,7 @@ function TourDetailsPage({ tour }) {
                 </span>
                 <span className="text-color pr-2">تومان</span>
               </div>
-              <Button className="leading-12 px-14" onClick={reserveHandler}>رزرو و خرید</Button>
+              <Button className="leading-12 px-20" onClick={reserveHandler}>رزرو و خرید</Button>
             </div>
           </div>
         </div>
