@@ -8,23 +8,19 @@ function AuthModal({ onClose, isOpen, setIsOpen }) {
   const [code, setCode] = useState("");
   const [otpSent, setOtpSent] = useState(false);
 
-{/* Send mobile successfully and set step to otp */}
+  {
+    /* Send mobile successfully and set step to otp */
+  }
   const handleMobileSuccess = () => {
     setStep("otp");
   };
 
   return (
     <>
-      <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md px-4"
-        onClick={() => setIsOpen(false)}
-      >
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md px-4">
         {otpSent && (
-          <div
-            className="bg-pink-800 rounded-b-md text-white px-10 py-5 z-51 absolute top-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            کد تایید شما: {code}
+          <div className="bg-white shadow-md  rounded-b-md text-color px-10 py-5 z-51 absolute top-0">
+            کد تایید شما:  <span className="text-primary">{code}</span>
           </div>
         )}
         {step === "mobile" ? (

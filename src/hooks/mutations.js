@@ -1,5 +1,5 @@
 import {
-    useMutation
+    useMutation, useQueryClient
 } from "@tanstack/react-query";
 import {
     sendOtp,
@@ -46,8 +46,12 @@ const useCheckOtpMutation = () => {
 
 // Mutation for put tour to basket
 const useAddToBasketMutation = () => {
+    const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: addToBasket
+        mutationFn: addToBasket,
+        onSuccess:()=> {
+            queryClient.invalidateQueries({queryKey:['basket']})
+        }
     })
 }
 export {

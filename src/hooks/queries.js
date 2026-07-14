@@ -1,17 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
-import { getProfile } from "@/services/auth";
-import { getTours } from "@/services/tours";
+import {
+    useQuery
+} from "@tanstack/react-query";
+import {
+    getProfile
+} from "@/services/auth";
+import {
+    getTours
+} from "@/services/tours";
+import {
+    getBaskets
+} from "@/services/basket";
+
+
 
 // For get users
 const useUser = () => {
     return useQuery({
         queryKey: ["user"],
         queryFn: async () => {
-            try{
+            try {
                 const res = await getProfile()
                 console.log('rsuccess:', res.data);
                 return res.data;
-            }catch(err){
+            } catch (err) {
                 console.log('error:', err);
                 throw err
             }
@@ -25,13 +36,12 @@ const useUser = () => {
 const useTours = () => {
     return useQuery({
         queryKey: ['tours'],
-        queryFn: async()=> {
-            try{
-                const res= await getTours()
+        queryFn: async () => {
+            try {
+                const res = await getTours()
                 return res.data
-            }
-            catch(error){
-                 console.log('error:', err);
+            } catch (error) {
+                console.log('error:', err);
                 throw error
             }
         },
@@ -40,4 +50,17 @@ const useTours = () => {
     })
 }
 
-export {useUser, useTours}
+
+//For get baskets
+const useBaskets = () => {
+    return useQuery({
+        queryKey: ["basket"],
+        queryFn: getBaskets
+    })
+}
+
+export {
+    useUser,
+    useTours,
+    useBaskets
+}

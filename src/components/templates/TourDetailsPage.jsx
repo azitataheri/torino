@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useUser } from "@/hooks/queries";
+import { useRouter } from "next/router";
 
 import { formatDuration, formatPrice } from "@/utils/format";
 import Button from "../common/Button";
@@ -10,6 +11,7 @@ import { useAddToBasketMutation } from "@/hooks/mutations";
 
 
 function TourDetailsPage({ tour }) {
+  const router = useRouter()
   const {setIsOpen} = useAuthModal()
   const {data:user} = useUser();
 
@@ -20,11 +22,17 @@ function TourDetailsPage({ tour }) {
     
     if(!user){
       setIsOpen(true)
-      return
+      return;
     }
 
     mutate(tour.id, {
-      onSuccess: () => { console.log('تور له سبذ خرید اضافه شد');},
+      onSuccess: () => {
+        console.log('add to basket');
+        
+        router.push("/checkout")
+      console.log('after push');
+      
+      },
       onError: (error) =>{console.log(error);
       }
     })
@@ -87,7 +95,7 @@ function TourDetailsPage({ tour }) {
                 </span>
                 <span className="text-color pr-2">تومان</span>
               </div>
-              <Button className="leading-12 px-20" onClick={reserveHandler}>رزرو و خرید</Button>
+              <Button className="leading-12 px-15" onClick={reserveHandler}>رزرو و خرید</Button>
             </div>
           </div>
         </div>

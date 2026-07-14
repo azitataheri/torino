@@ -114,7 +114,7 @@ function CheckOtpForm({ mobile, onClose }) {
             {errors.code.message}
           </span>
         )}
-        <Button type="submit"> ورود به تورینو </Button>
+        <Button type="submit" className="py-3"> ورود به تورینو </Button>
       </form>
     </div>
   );

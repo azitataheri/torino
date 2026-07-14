@@ -15,7 +15,7 @@ function DropDownMenu({ openDropDown }) {
     window.location.href = "/";
   };
   return (
-    <div className="bg-white absolute top-10 md:top-11 z-40  w-60 md:w-64  -left-5 md:-left-10 rounded-xl shadow-md">
+    <div className="bg-white absolute top-9 md:top-10 z-40  w-60 md:w-64  -left-5 md:-left-10 rounded-xl shadow-md">
       {openDropDown && (
         <ul className="">
           {menuItems.map((item) => (
@@ -27,7 +27,7 @@ function DropDownMenu({ openDropDown }) {
                 }
               }}
               key={item.id}
-              className={`flex items-center border-b border-custome-gray p-3 cursor-pointer text-[16px] first:rounded-t-xl
+              className={`flex items-center border-b border-custome-gray last:border-b-0 p-3 cursor-pointer text-[16px] first:rounded-t-xl
                  ${selectedItem === item.id ? "bg-custome-gray text-secondary" : ""}`}
             >
               <div

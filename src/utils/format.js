@@ -19,20 +19,20 @@ const formatCompleteDate = (date) => {
 // Format count of day and night
 const formatDuration = (startDate, endDate) => {
     const days = (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)
-    return `${days} روز - ${days -1 }شب `
+    return `${days} روز و ${days -1 }شب `
 }
 
 // Format cities
 const formatCities = (city) => {
     const cities = {
         Tehran: 'تهران',
-        Sananndaj: 'سنندج',
+        Sananndaj: 'کردستان',
         Madrid: 'مادرید',
         Isfahan: 'اصفهان',
         Sulaymaniyah: 'سلیمانیه',
         Hewler: 'هولر',
         Mazandaran: 'مازنداران',
-        Gilan: 'گیلان',
+        Gilan: 'آفرود',
         Italy: 'ایتالیا'
     }
     return cities[city] || city
