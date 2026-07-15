@@ -23,10 +23,10 @@ function Layout({ children }) {
   const {isOpen, setIsOpen} = useAuthModal()
 
   return (
-    <div className="p-5 md:p-0 min-h-screen flex flex-col">
+    <div className="p-0 min-h-screen flex flex-col">
       <Header setIsOpen={setIsOpen} />
 
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 selection:bg-green-300 p-5 md:p-0">{children}</main>
 
       <Footer />
 

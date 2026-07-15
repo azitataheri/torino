@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <div>
-      <div className="w-full font-bakh flex items-center justify-around py-3 md:shadow-md">
+      <div className="w-full font-bakh flex items-center justify-around py-3 shadow-md">
         <div className="w-[1600px] flex justify-between items-center mx-5 md:mx-0">
           {/* Hamburger */}
           <button

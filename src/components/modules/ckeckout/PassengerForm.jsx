@@ -1,6 +1,17 @@
 import Image from "next/image";
 
-function PassengerForm() {
+import Input from "@/components/common/Input";
+import FormError from "@/components/common/FormError";
+import Select from "@/components/common/Select";
+import DateInput from "@/components/common/DateInput";
+
+function PassengerForm({ methods }) {
+  const {
+    register,
+    setValue,
+    formState: { errors },
+  } = methods;
+
   return (
     <>
       <div className="text-2xl flex items-center">
@@ -10,28 +21,47 @@ function PassengerForm() {
           height={24}
           alt="passenger icon"
         />
-        <span> مشخصات مسافر</span>
+        <span className="pr-5"> مشخصات مسافر</span>
       </div>
-      <form>
-        <div className="grid grid-1 md:grid-cols-3 gap-8 py-5">
-          <input
-            class="order-0 md:order-0 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-black-400 rounded-md px-3 py-4"
-            placeholder="نام و نام خانوادگی"
-          />
-          <input
-            class="order-2 md:order-1 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-black-400 rounded-md px-3 py-4"
-            placeholder="کد ملی"
-          />
-          <input
-            class="order-3 md:order-2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-black-400 rounded-md px-3 py-4"
-            placeholder="تاریخ تولد"
-          />
-          <select class="order-1 md:order-3 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-black-400 rounded-md px-3 py-4">
-            <option className="pl-3">زن</option>
-            <option className="pl-3">مرد</option>
-          </select>
+      <div className="grid grid-1 md:grid-cols-3 gap-8 py-5">
+        
+        {/* fullName */}
+        <div className="order-0">
+          <Input placeholder="نام و نام خانوادگی" {...register("fullName")} />
+          {errors.fullName && <FormError message={errors.fullName?.message} />}
         </div>
-      </form>
+
+        {/* nationalCode */}
+        <div className="order-1">
+          <Input placeholder="کد ملی" {...register("nationalCode")} />
+          {errors.nationalCode && (
+            <FormError message={errors.fullName?.message} />
+          )}
+        </div>
+
+
+        {/* birthDate */}
+        <div className="flex items-center order-2 md:order-2 relative h-14 w-full  border
+        border-gray-400 rounded-md px-4">
+          <DateInput
+            name="birthDate"
+            setValue={setValue}
+            error={errors.birthDate?.message}
+          />
+        </div>
+
+        {/*gender*/}
+        <div className="order-3">
+          <Select
+            {...register("gender")}
+            error={errors.gender?.message}
+            options={[
+              { value: "female", label: "زن" },
+              { value: "male", label: "مرد" },
+            ]}
+          />
+        </div>
+      </div>
     </>
   );
 }

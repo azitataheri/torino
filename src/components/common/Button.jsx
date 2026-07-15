@@ -4,9 +4,10 @@ function Button({
   type = "button",
   className = "",
   disabled = false,
+  ...props
 }) {
-  return (
-    <button
+  return (<button
+    {...props}
       type={type}
       onClick={onClick}
       disabled={disabled}
