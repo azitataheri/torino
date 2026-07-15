@@ -1,12 +1,21 @@
 import { passengerSchema } from "@/utils/validation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+
 
 import PassengerForm from "../modules/ckeckout/PassengerForm";
 import BasketItem from "../modules/ckeckout/BasketItem";
 import { useCreateOrderMutation } from "@/hooks/mutations";
+import toast from "react-hot-toast";
+
+
 
 function CheckoutPage({ data }) {
+    const queryClient = useQueryClient();
+    const router = useRouter()
+  
   const methods = useForm({
     resolver: yupResolver(passengerSchema),
   });
@@ -17,10 +26,16 @@ function CheckoutPage({ data }) {
   const orderHandler = (data) => {
     console.log('form data:', data);
     mutate(data,{
-      onSuccess: (res) => {console.log('success:', res.data);
+      onSuccess: () => {
+        toast.success('خرید با موفقیت انجام شد.')
+         queryClient.invalidateQueries({
+            queryKey: ["basket"],
+          });
+          router.push('/profile')
+          
       },
-      onError: (err) => {
-        console.log('error:', err.response?.data || err);
+      onError: () => {
+        toast.error('خطایی در خرید رخ داده است.')
         
       }
     })
