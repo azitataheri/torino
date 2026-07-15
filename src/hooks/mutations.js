@@ -1,5 +1,6 @@
 import {
-    useMutation, useQueryClient
+    useMutation,
+    useQueryClient
 } from "@tanstack/react-query";
 import {
     sendOtp,
@@ -9,7 +10,9 @@ import {
     addToBasket
 } from "@/services/tours";
 
-
+import {
+    createOrder
+} from "@/services/order";
 
 // Mutation for send otp code
 const useSendOtpMutation = () => {
@@ -49,13 +52,27 @@ const useAddToBasketMutation = () => {
     const queryClient = useQueryClient()
     return useMutation({
         mutationFn: addToBasket,
-        onSuccess:()=> {
-            queryClient.invalidateQueries({queryKey:['basket']})
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ['basket']
+            })
         }
+    })
+}
+
+
+const useCreateOrderMutation = () => {
+    const createOrderMutation = async (data) => {
+        const res = await createOrder(data)
+        return res
+    }
+    return useMutation({
+        mutationFn: createOrderMutation
     })
 }
 export {
     useSendOtpMutation,
     useCheckOtpMutation,
-    useAddToBasketMutation
+    useAddToBasketMutation,
+    useCreateOrderMutation
 }
