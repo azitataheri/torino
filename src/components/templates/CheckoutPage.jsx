@@ -28,10 +28,12 @@ function CheckoutPage({ data }) {
     mutate(data,{
       onSuccess: () => {
         toast.success('خرید با موفقیت انجام شد.')
-         queryClient.invalidateQueries({
+        queryClient.invalidateQueries({
             queryKey: ["basket"],
           });
-          router.push('/profile')
+          setTimeout (() =>{
+            router.push('/profile')
+          }, 2000)
           
       },
       onError: () => {
