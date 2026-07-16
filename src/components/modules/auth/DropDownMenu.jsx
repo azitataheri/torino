@@ -3,8 +3,10 @@ import { api } from "@/services/config";
 import Image from "next/image";
 import { useState } from "react";
 import { menuItems } from "@/contacts/dropdown";
+import { useRouter } from "next/router";
 
 function DropDownMenu({ openDropDown }) {
+  const router = useRouter()
   const [selectedItem, setSelectedItem] = useState(1);
   const { data: user } = useUser();
   const logoutHandler = () => {
@@ -22,6 +24,12 @@ function DropDownMenu({ openDropDown }) {
             <li
               onClick={() => {
                 setSelectedItem(item.id);
+                 if (item.type === "mobile") {
+                 router.push('/')
+                }
+                if (item.type === "profile") {
+                 router.push('/profile')
+                }
                 if (item.type === "logout") {
                   logoutHandler();
                 }
@@ -40,8 +48,10 @@ function DropDownMenu({ openDropDown }) {
                   height={17}
                 />
               </div>
-              <p className={`px-1 py-0.5 
-                ${item.type === 'logout' ? 'text-custome-red' : ''} ${item.type === 'mobile' ? 'font-number' : ''}`}>
+              <p
+                className={`px-1 py-0.5 
+                ${item.type === "logout" ? "text-custome-red" : ""} ${item.type === "mobile" ? "font-number" : ""}`}
+              >
                 {item.type === "mobile" ? user?.mobile : item.title}
               </p>
             </li>

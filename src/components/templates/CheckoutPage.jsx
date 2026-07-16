@@ -33,12 +33,11 @@ function CheckoutPage({ data }) {
           });
           setTimeout (() =>{
             router.push('/profile')
-          }, 2000)
+          }, 1500)
           
       },
       onError: () => {
         toast.error('خطایی در خرید رخ داده است.')
-        
       }
     })
     

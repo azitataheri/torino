@@ -28,6 +28,7 @@ body {
   --font-bakh: "yekanbakh";
   --font-number: "VazirFdWol";
   --color-primary: #28A745;
+  --color-primary-300: rgba(40, 167, 69, 0.25);
   --color-secondary: #10411B;
   --color-complementry: #009ECA;
   --text-color: #282828;
