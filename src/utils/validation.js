@@ -1,5 +1,10 @@
 import * as yup from 'yup'
 
+const accountValidation = yup.object({
+    email: yup
+    .string()
+    .required('ایمیل معتبر نیست')
+})
 const passengerSchema = yup.object({
     fullName: yup
         .string()
@@ -16,6 +21,22 @@ const passengerSchema = yup.object({
         .required('جنیست را انتخاب کنید')
 })
 
+
+ const bankValidation = yup.object({
+  payment: yup.object({
+    shaba_code: yup
+      .string()
+      .required("شماره شبا الزامی است"),
+
+    debitCard_code: yup
+      .string()
+      .required("شماره کارت الزامی است"),
+
+    accountIdentifier: yup
+      .string()
+      .required("شماره حساب الزامی است"),
+  }),
+});
 export {
-    passengerSchema
+    passengerSchema, bankValidation, accountValidation
 }

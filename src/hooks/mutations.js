@@ -13,6 +13,10 @@ import {
 import {
     createOrder
 } from "@/services/order";
+import {
+    updateProfile
+} from "@/services/user";
+import toast from "react-hot-toast";
 
 // Mutation for send otp code
 const useSendOtpMutation = () => {
@@ -60,7 +64,7 @@ const useAddToBasketMutation = () => {
     })
 }
 
-
+// Mutation for order
 const useCreateOrderMutation = () => {
     const createOrderMutation = async (data) => {
         const res = await createOrder(data)
@@ -70,9 +74,27 @@ const useCreateOrderMutation = () => {
         mutationFn: createOrderMutation
     })
 }
+
+
+// Mutation for update profile
+const useUpdateProfileMutation = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: updateProfile,
+        onSuccess: () => {
+            toast.success('اطلاعات با موفقیت ویرایش شد')
+
+            queryClient.invalidateQueries({
+                queryKey: ['user']
+            })
+        }
+    })
+}
 export {
     useSendOtpMutation,
     useCheckOtpMutation,
     useAddToBasketMutation,
-    useCreateOrderMutation
+    useCreateOrderMutation,
+    useUpdateProfileMutation
 }

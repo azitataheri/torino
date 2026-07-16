@@ -22,24 +22,26 @@ function Sidebar({ activeTab, setActiveTab }) {
     },
   ];
   return (
-    <div className="rounded-xl border border-gray-300">
+    <div className="flex md:block md:rounded-xl border-b border-b-gray-400 md:border md:border-gray-300 text-sm md:text-base">
       {sides.map((side) => (
         <div
           key={side.id}
           className={`${
             side.slug === activeTab
               ? side.slug === "profile"
-                ? "bg-primary-300 rounded-t-xl"
+                ? "border-b-2 border-b-primary md:bg-primary-300 md:rounded-t-xl"
                 : side.slug === "transaction"
-                  ? "bg-primary-300 rounded-b-xl"
-                  : "bg-primary-300 rounded-none"
-              : "bg-transparent"
-          } flex items-center border-b last:border-b-0 border-b-gray-300 px-4 py-5 cursor-pointer`}
+                  ? "border-b-2 border-b-primary md:bg-primary-300 md:rounded-b-xl"
+                  : "border-b-2 border-b-primary md:bg-primary-300 md:rounded-none"
+              : "border-b-primary md:bg-transparent"
+          } flex items-center justify-center md:justify-normal md:border-b md:last:border-b-0 md:border-b-gray-300 px-4 py-5 cursor-pointer`}
           onClick={() => setActiveTab(side.slug)}
         >
           <Image src={side.img} width={20} height={20} alt="sidebar icons" />
           <p
-            className={side.slug === activeTab ? "text-primary pr-2" : "text-black pr-2"}
+            className={
+              side.slug === activeTab ? "text-primary pr-2" : "text-black pr-2"
+            }
           >
             {side.title}
           </p>

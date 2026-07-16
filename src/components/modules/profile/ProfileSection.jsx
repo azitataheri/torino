@@ -12,12 +12,12 @@ function ProfileSection({setIsEdit}) {
     <div>
       <div className="border border-gray-300 py-4 px-10 space-y-6 rounded-lg">
         <h3 className="text-lg">اطلاعات حساب کاربری</h3>
-        <div className="grid grid-cols-2">
-          <div className="flex">
+        <div className="flex flex-wrap md:grid md:grid-cols-2">
+          <div className="w-full flex justify-between md:justify-normal">
             <p>شماره موبایل:</p>
             <span className="pr-10">{user?.mobile}</span>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="w-full flex items-center justify-between mt-7 md:mt-0">
             <p>ایمیل:</p>
             {user?.email ? (
               <p className="pr-10">{user.email}</p>
