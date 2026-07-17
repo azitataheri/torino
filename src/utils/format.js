@@ -12,7 +12,7 @@ const formatCompleteDate = (date) => {
     Date(date).toLocaleDateString("fa-IR", {
         year: "numeric",
         month: "long",
-        day: 'numeric'
+        day: 'numeric',
     })
 }
 
@@ -63,7 +63,7 @@ const calculateDuration = (date1, date2) => {
 
 // Format hotel stars
 const formatHotel = (options) => {
-    const hotel = options ? .find((item) => item.includes("هتل") || item.includes("هفل"));
+    const hotel = options ?.find((item) => item.includes("هتل") || item.includes("هفل"));
 
     if (!hotel) return null;
 
@@ -82,6 +82,33 @@ const formatPrice = (price) => {
     return (price * 1000).toLocaleString("fa-IR")
 }
 
+
+
+// Status of user tours
+const formatToursStatus = (startDate, endDate) => {
+    const now = new Date();
+
+    if (now < new Date(startDate)) {
+        return {
+            text: 'در انتظار شروع',
+            className: 'bg-complementry text-sky-600 rounded-xl text-xs px-4 pt-1'
+        }
+    }
+
+    if (now > new Date(endDate)) {
+        return {
+            text: 'به اتمام رسیده',
+            className: 'bg-primary-300 text-primary rounded-xl text-xs px-4 pt-1'
+        }
+    }
+
+
+    return {
+        text: 'در حال برگزاری',
+        className: 'bg-yellow-100 text-yellow-600 rounded-xl text-xs px-4 pt-1'
+    }
+}
+
 export {
     formatDate,
     formatCompleteDate,
@@ -90,5 +117,6 @@ export {
     formatHotel,
     formatPrice,
     formatCities,
-    calculateDuration
+    calculateDuration,
+    formatToursStatus
 }

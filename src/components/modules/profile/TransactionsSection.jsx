@@ -1,8 +1,12 @@
-import React from 'react'
+import {useUserTransactions} from '@/hooks/queries'
 
 function TransactionsSection() {
+  const {data: usertransactions} =  useUserTransactions()
+  console.log(usertransactions);
+  
   return (
-    <div>TransactionsSection</div>
+    <div className="border border-gray-300 p-5 rounded-xl">
+    </div>
   )
 }
 

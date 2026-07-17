@@ -10,6 +10,14 @@ import {
 import {
     getBaskets
 } from "@/services/basket";
+import {
+    getUserTours
+} from '@/services/user'
+
+import {
+    getUserTransactions
+} from '@/services/user'
+
 
 
 
@@ -59,8 +67,27 @@ const useBaskets = () => {
     })
 }
 
+
+// For get user tours
+const useUserTours = () => {
+    return useQuery({
+        queryKey: ['usertours'],
+        queryFn: getUserTours
+    })
+}
+
+
+// For get transactions
+const useUserTransactions = () => {
+    return useQuery({
+        queryKey: ['usertransactions'],
+        queryFn: getUserTransactions
+    })
+}
 export {
     useUser,
     useTours,
-    useBaskets
+    useBaskets,
+    useUserTours,
+    useUserTransactions
 }
