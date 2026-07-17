@@ -1,10 +1,8 @@
-import { useUser } from "@/hooks/queries";
-
 import AccountForm from "./AccountForm";
 import PersonalForm from "./PersonalForm";
 import BankForm from "./BankForm";
 
-function EditProfile({setIsEdit}) {
+function EditProfile({setIsEdit, setActiveTab}) {
 
   return (
     <div>
@@ -13,10 +11,10 @@ function EditProfile({setIsEdit}) {
       <AccountForm />
 
       {/* Edit user info */}
-      <PersonalForm setIsEdit={setIsEdit} />
+      <PersonalForm setIsEdit={setIsEdit} setActiveTab={setActiveTab} />
 
       {/* Edit user bank info */}
-      <BankForm setIsEdit={setIsEdit} />
+      <BankForm setIsEdit={setIsEdit} setActiveTab={setActiveTab}  />
     </div>
   );
 }

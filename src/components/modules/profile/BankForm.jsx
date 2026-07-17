@@ -1,22 +1,42 @@
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
-import { useUser } from "@/hooks/queries"
+import { yupResolver } from "@hookform/resolvers/yup"
+
 
 import Input from "@/components/common/Input"
 import Button from "@/components/common/Button"
-import { yupResolver } from "@hookform/resolvers/yup"
 import { bankValidation } from "@/utils/validation"
 import { useUpdateProfileMutation } from "@/hooks/mutations"
+import { useUser } from "@/hooks/queries"
 
-function BankForm({setIsEdit}) {
-     const {data: user} = useUser()
-    const {register, handleSubmit, formState:{errors}} = useForm({resolver: yupResolver(bankValidation)})
+
+
+function BankForm({setIsEdit, setActiveTab}) {
+    const {data: user} = useUser()
+    const {register, handleSubmit, setValue} = useForm({resolver: yupResolver(bankValidation)})
     const{mutate} = useUpdateProfileMutation()
 
-    const onSubmit = (data) => {
-      mutate(data)
+
+    // UseEffect for get previous user bank info
+    useEffect(() => {
+      if(user?.payment) {
+        setValue('payment.shaba_code', `${user.payment.shaba_code}`)
+        setValue('payment.debitCard_code', `${user.payment.debitCard_code}`)
+        setValue('payment.accountIdentifier', `${user.payment.accountIdentifier}`)
+      }
+    }, [user, setValue])
+
+
+    const editBankInfoHandler = (data) => {
+      mutate(data, {
+        onSuccess: () => {
+          setIsEdit(false)
+          setActiveTab('profile')
+        }
+      })
     }
   return (
-   <form onSubmit={handleSubmit(onSubmit)} >
+   <form onSubmit={handleSubmit(editBankInfoHandler)} >
      <div className="border border-gray-300 space-y-6 rounded-lg mt-8">
         <div>
           <div className="flex items-center justify-between cursor-pointer py-5 px-10">

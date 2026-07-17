@@ -18,6 +18,8 @@ import {
 } from "@/services/user";
 import toast from "react-hot-toast";
 
+
+
 // Mutation for send otp code
 const useSendOtpMutation = () => {
     const sendOtpMutation = async (mobile) => {
@@ -87,7 +89,7 @@ const useUpdateProfileMutation = () => {
 
             queryClient.invalidateQueries({
                 queryKey: ['user']
-            })
+            })            
         }
     })
 }

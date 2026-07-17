@@ -6,6 +6,7 @@ import {
 } from "@/utils/format";
 
 function TourItems({ tour }) {
+  // Tour items array
   const items = [
     {
       label: "مبدا",

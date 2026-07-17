@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 function Sidebar({ activeTab, setActiveTab }) {
+  // Array of sidebar items
   const sides = [
     {
       id: 1,
@@ -21,11 +22,13 @@ function Sidebar({ activeTab, setActiveTab }) {
       slug: "transaction",
     },
   ];
+
   return (
     <div className="flex md:block md:rounded-xl border-b border-b-gray-400 md:border md:border-gray-300 text-sm md:text-base">
       {sides.map((side) => (
         <div
           key={side.id}
+          // Handle styles when active an item in both of mobile and desktop status
           className={`${
             side.slug === activeTab
               ? side.slug === "profile"
@@ -50,5 +53,4 @@ function Sidebar({ activeTab, setActiveTab }) {
     </div>
   );
 }
-
 export default Sidebar;
