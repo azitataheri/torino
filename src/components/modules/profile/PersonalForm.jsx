@@ -8,7 +8,7 @@ import Button from "@/components/common/Button";
 import { useUpdateProfileMutation } from "@/hooks/mutations";
 import { useUser } from "@/hooks/queries";
 
-function PersonalForm({ setIsEdit, setActiveTab }) {
+function PersonalForm({ isEdit, setIsEdit, setActiveTab }) {
   const { data: user } = useUser();
   const {
     register,
@@ -53,9 +53,9 @@ function PersonalForm({ setIsEdit, setActiveTab }) {
     <form onSubmit={handleSubmit(editUserInfoHandler)}>
       <div className="border border-gray-300 space-y-6 rounded-lg mt-8">
         <div className="flex items-center justify-between py-5 px-10">
-          <h3 className="text-lg">اطلاعات شخصی</h3>
+          {isEdit ? <h3 className="text-lg"> ویرایش اطلاعات شخصی</h3> : <h3 className="text-lg">  اطلاعات شخصی</h3>}
         </div>
-        <div className="grid grid-cols-3 gap-4 px-10">
+        <div className="flex flex-col md:grid md:grid-cols-3 md:gap-4 px-10 space-y-4">
           <div>
             <Input {...register("fullName")} placeholder="نام و نام خانوادگی" />
           </div>
@@ -84,9 +84,9 @@ function PersonalForm({ setIsEdit, setActiveTab }) {
             />
           </div>
         </div>
-        <div className="border-t border-t-gray-300 px-10 py-3">
+        <div className="border-t-0 md:border-t md:border-t-gray-300 px-10 py-3">
           <div className="flex justify-end">
-            <Button className="px-13 py-2 ml-10" type="submit">
+            <Button className="px-13 py-2 ml-14" type="submit">
               تایید
             </Button>
             <Button

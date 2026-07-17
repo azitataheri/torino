@@ -38,7 +38,7 @@ function ProfileSection({ setIsEdit }) {
                   height={20}
                   alt="edit"
                 />
-                <span className="pr-3 text-complementry">افزودن</span>
+                <span className="pr-3 text-complementry text-md md:text-base">افزودن</span>
               </div>
             )}
           </div>
@@ -54,23 +54,23 @@ function ProfileSection({ setIsEdit }) {
             onClick={() => setIsEdit(true)}
           >
             <Image src="/images/edit-2.svg" width={20} height={20} alt="edit" />
-            <span className="pr-3 text-complementry">ویرایش اطلاعات</span>
+            <span className="pr-3 text-complementry text-md md:text-base">ویرایش اطلاعات</span>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="col-span-1 flex items-center">
+        <div className="flex flex-wrap md:grid md:grid-cols-2 md:gap-4 leading-10 md:leading-none">
+          <div className="w-full flex items-center justify-between md:justify-normal">
             <p>نام و نام خانوادگی</p>
             <p className="pr-10">{`${user?.firstName} ${user?.lastName}`}</p>
           </div>
-          <div className="col-span-1 flex items-center">
+          <div className="w-full flex items-center justify-between md:justify-normal">
             <p>کد ملی:</p>
             <p className="pr-10">{user.nationalCode}</p>
           </div>
-          <div className="col-span-1 flex items-center">
+          <div className="w-full flex items-center justify-between md:justify-normal">
             <p>جنسیت</p>
             <p className="pr-10">{genderLabel[user.gender]}</p>
           </div>
-          <div className="col-span-1 flex items-center">
+          <div className="w-full flex items-center justify-between md:justify-normal">
             <p>تاریخ تولد</p>
             <p className="pr-10">{user.birthDate}</p>
           </div>
@@ -89,16 +89,16 @@ function ProfileSection({ setIsEdit }) {
             <span className="pr-3 text-complementry">ویرایش اطلاعات</span>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="col-span-1 flex items-center">
-            <p>شماره شبا</p>
-            <p className="pr-10">{user.payment.shaba_code}</p>
-          </div>
-          <div className="col-span-1 flex items-center">
+        <div className="flex flex-wrap md:grid md:grid-cols-2 md:gap-4 leading-10 md:leading-none">
+          <div className="w-full flex items-center justify-between md:justify-normal">
             <p>شماره کارت</p>
             <p className="pr-10">{user.payment.debitCard_code}</p>
           </div>
-          <div className="col-span-1 flex items-center">
+          <div className="w-full flex items-center justify-between md:justify-normal">
+            <p>شماره شبا</p>
+            <p className="pr-10">{user.payment.shaba_code}</p>
+          </div>
+          <div className="w-full flex items-center justify-between md:justify-normal">
             <p>شماره حساب</p>
             <p className="pr-10">{user.payment.accountIdentifier}</p>
           </div>

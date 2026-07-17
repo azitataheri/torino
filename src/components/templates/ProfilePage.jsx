@@ -15,7 +15,7 @@ function ProfilePage() {
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
       <div className="md:col-span-3">
-        {activeTab === "profile" && ( isEdit ? <EditProfile setActiveTab={setActiveTab} setIsEdit={setIsEdit} /> : <ProfileSection setActiveTab={setActiveTab} setIsEdit={setIsEdit}/> )}
+        {activeTab === "profile" && ( isEdit ? <EditProfile setActiveTab={setActiveTab} isEdit={isEdit} setIsEdit={setIsEdit} /> : <ProfileSection setActiveTab={setActiveTab} setIsEdit={setIsEdit}/> )}
         {activeTab === "tours" ? <ToursSection /> : ""}
         {activeTab === "transaction" ? <TransactionsSection /> : ""}
       </div>
