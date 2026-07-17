@@ -28,7 +28,6 @@ const useUser = () => {
         queryFn: async () => {
             try {
                 const res = await getProfile()
-                console.log('rsuccess:', res.data);
                 return res.data;
             } catch (err) {
                 console.log('error:', err);

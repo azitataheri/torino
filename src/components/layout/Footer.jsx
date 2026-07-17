@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+
 
 function Footer() {
   return (
@@ -27,12 +29,14 @@ function Footer() {
           {/* Logo & Licenses */}
           <div className="w-full md:w-1/2 flex flex-row-reverse md:flex-col justify-around items-center md:items-end">
             <div className="flex flex-col items-center md:items-end">
+               <Link href="/">
               <Image
                 src="/images/Torino.svg"
+                alt="torino logo"
                 width={120}
                 height={40}
-                alt="Torino"
               />
+            </Link>
 
               <p className="mt-4 text-[15px]">تلفن پشتیبانی: 0218574</p>
             </div>

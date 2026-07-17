@@ -8,36 +8,28 @@ import TourItems from "../common/TourItems";
 import { useAuthModal } from "@/context/AuthModalContext";
 import { useAddToBasketMutation } from "@/hooks/mutations";
 
-
-
 function TourDetailsPage({ tour }) {
-  const router = useRouter()
-  const {setIsOpen} = useAuthModal()
-  const {data:user} = useUser();
+  const router = useRouter();
+  const { setIsOpen } = useAuthModal();
+  const { data: user } = useUser();
 
-  const {mutate} = useAddToBasketMutation()
+  const { mutate } = useAddToBasketMutation();
 
   const reserveHandler = () => {
-    console.log('user is', user);
-    
-    if(!user){
-      setIsOpen(true)
+    if (!user) {
+      setIsOpen(true);
       return;
     }
 
     mutate(tour.id, {
       onSuccess: () => {
-        console.log('add to basket');
-        
-        router.push("/checkout")
-      console.log('after push');
-      
+        router.push("/checkout");
       },
-      onError: (error) =>{console.log(error);
-      }
-    })
-  }
-
+      onError: (error) => {
+        console.log(error);
+      },
+    });
+  };
 
   return (
     <div className="md:bg-[#F8F8F8] overflow-hidden md:py-20">
@@ -95,7 +87,9 @@ function TourDetailsPage({ tour }) {
                 </span>
                 <span className="text-color pr-2">تومان</span>
               </div>
-              <Button className="leading-12 px-15" onClick={reserveHandler}>رزرو و خرید</Button>
+              <Button className="leading-12 px-15" onClick={reserveHandler}>
+                رزرو و خرید
+              </Button>
             </div>
           </div>
         </div>

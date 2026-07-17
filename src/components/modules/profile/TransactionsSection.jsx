@@ -1,18 +1,17 @@
 import { useUserTransactions } from "@/hooks/queries";
 import {
-  formatCompleteDate,
   formatPrice,
   formatTransactionDate,
 } from "@/utils/format";
 
 function TransactionsSection() {
   const { data: usertransactions } = useUserTransactions();
-  console.log("usertransactions is", usertransactions);
 
   return (
     <div className="border border-gray-300 p-5 rounded-xl mt-7 md:mt-0">
       <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white">
         <table className="w-full text-right">
+          {/* Table head */}
           <thead className="bg-[#F3F3F3]">
             <tr>
               <th className="px-6 py-5 text-xs md:text-lg font-medium">
@@ -31,6 +30,7 @@ function TransactionsSection() {
             </tr>
           </thead>
 
+          {/* Table body */}
           <tbody>
             {usertransactions?.data?.map((item) => (
               <tr

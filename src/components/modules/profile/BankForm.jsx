@@ -55,8 +55,8 @@ function BankForm({isEdit, setIsEdit, setActiveTab}) {
           </div>
         </div>
         <div className="border-t-0 md:border-t md:border-t-gray-300 px-10 py-3">
-          <div className="flex justify-end">
-            <Button className="px-13 py-2 ml-14" type="submit">تایید</Button>
+          <div className="flex md:justify-end">
+            <Button className="px-13 py-2 ml-3 md:ml-14" type="submit">تایید</Button>
             <Button bg="white" className="px-12 py-2" onClick={() => setIsEdit(false)}>
               انصراف
             </Button>

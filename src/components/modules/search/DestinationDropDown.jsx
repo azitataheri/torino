@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+
 import { formatCities } from "@/utils/format";
 
 function DestinationDropDown({ tours, value, setValue }) {
@@ -32,7 +33,7 @@ function DestinationDropDown({ tours, value, setValue }) {
         {value ? formatCities(value.name) : "مقصد"}
       </div>
       {isOpen ? (
-        <div className="absolute top-16 w-full border bg-white border-gray-300 rounded-lg">
+        <div className="absolute top-16 w-full border bg-white border-gray-300 rounded-lg z-50">
           <div className="bg-[#F8F8F8] rounded-t-lg pr-1">پرتردد</div>
 
           {destinations.map((destination) => (

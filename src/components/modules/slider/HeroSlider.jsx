@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Image from "next/image";
-// آرایه‌ی عکس‌ها - جای این‌ها رو با عکس‌های خودت عوض کن
+
+
 const images = [
   "/images/slide1.png",
   "/images/slide2.png",
   "/images/slide3.png",
   "/images/slide4.png",
-  //  "https://images.unsplash.com/photo-1552423314-cf29ab68ad73?w=800&q=80",
-  // "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=800&q=80",
-  // "https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&q=80",
-  // "https://images.unsplash.com/photo-1516834474-48c0abc2a902?w=800&q=80",
 ];
 
 const CARD_WIDTH = 368;

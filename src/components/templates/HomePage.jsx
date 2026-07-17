@@ -25,7 +25,7 @@ function HomePage({ tours }) {
           <SearchBox tours={tours} />
         </div>
         {/* Tours list */}
-        <div className="mt-40">
+        <div className="mt-10 md:mt-40">
           <div>
             <p className="text-3xl pb-4">همه تورها</p>
           </div>

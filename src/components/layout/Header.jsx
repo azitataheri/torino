@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useUser } from "@/hooks/queries";
+import Link from "next/link";
+
 
 import AuthModal from "../modules/auth/AuthModal";
 import Menu from "../modules/Menu";
@@ -19,7 +21,7 @@ function Header() {
 
   return (
     <div>
-      <div className="w-full font-bakh flex items-center justify-around py-3 shadow-md">
+      <div className="w-full font-bakh flex items-center justify-around py-4 shadow-md">
         <div className="w-[1600px] flex justify-between items-center mx-5 md:mx-0">
           {/* Hamburger */}
           <button
@@ -36,12 +38,14 @@ function Header() {
 
           {/* Logo */}
           <div className="hidden md:flex items-center">
-            <Image
-              src="/images/Torino.svg"
-              alt="torino logo"
-              width={120}
-              height={40}
-            />
+            <Link href="/">
+              <Image
+                src="/images/Torino.svg"
+                alt="torino logo"
+                width={120}
+                height={40}
+              />
+            </Link>
             {/* Desktop Menu */}
             <Menu />
           </div>
@@ -121,7 +125,6 @@ function Header() {
         </div>
       )}
 
-     
     </div>
   );
 }

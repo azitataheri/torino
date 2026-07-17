@@ -64,24 +64,21 @@ body {
   background-color: transparent !important;
 }
 
-.css-1e0sis0{
+.css-1e0sis0 {
   position: absolute !important;
   top: 50px !important
 }
-@media (max-width: 768px) {
-  .css-1e0sis0{
-  position: absolute !important;
-  top: 180px !important;
-}
 
+@media (max-width: 768px) {
+  .css-1e0sis0 {
+    position: absolute !important;
+    top: 180px !important;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-
-
 }

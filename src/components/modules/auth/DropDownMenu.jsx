@@ -17,7 +17,7 @@ function DropDownMenu({ openDropDown }) {
     window.location.href = "/";
   };
   return (
-    <div className="bg-white absolute top-9 md:top-10 z-40  w-60 md:w-64  -left-5 md:-left-10 rounded-xl shadow-md">
+    <div className="bg-white absolute top-9 md:top-10 z-40  w-60 md:w-64  -left-1 md:-left-10 rounded-xl shadow-md">
       {openDropDown && (
         <ul className="">
           {menuItems.map((item) => (

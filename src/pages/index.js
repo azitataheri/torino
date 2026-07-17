@@ -11,11 +11,11 @@ export default function Home({tours}) {
  
 export async function getServerSideProps(context) {
   const {origin, destination, startDate, endDate } = context.query
-const {data} = await getTours()
-let tours = data
-if(origin){
-  tours = tours.filter((tour) => (tour.origin.id === origin))
-}
+  const {data} = await getTours()
+  let tours = data
+  if(origin){
+    tours = tours.filter((tour) => (tour.origin.id === origin))
+  }
 
  if(destination){
     tours = tours.filter((tour) => (tour.destination.id === destination))
@@ -29,10 +29,6 @@ if(origin){
       )
     })
   }
-
-  console.log({startDate, endDate});
-  
-
   return{
     props: {
       tours

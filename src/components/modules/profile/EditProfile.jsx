@@ -8,7 +8,7 @@ function EditProfile({isEdit, setIsEdit, setActiveTab}) {
     <div>
 
       {/* Edit email */}
-      <AccountForm />
+      <AccountForm setIsEdit={setIsEdit} setActiveTab={setActiveTab}/>
 
       {/* Edit user info */}
       <PersonalForm setIsEdit={setIsEdit} isEdit={isEdit} setActiveTab={setActiveTab} />

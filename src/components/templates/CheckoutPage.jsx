@@ -24,7 +24,6 @@ function CheckoutPage({ data }) {
   const {mutate, isPending} = useCreateOrderMutation();
 
   const orderHandler = (data) => {
-    console.log('form data:', data);
     mutate(data,{
       onSuccess: () => {
         toast.success('خرید با موفقیت انجام شد.')

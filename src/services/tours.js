@@ -10,9 +10,7 @@ const getTourById = (id) => {
     return api.get(`/tour/${id}`)
 }
 
-const addToBasket = (id) => {
-    console.log('tour id:', id);
-    
+const addToBasket = (id) => {    
     return api.put(`/basket/${id}`)
 }
 export {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { formatDuration, formatCities, formatPrice } from "@/utils/format";
 import Button from "@/components/common/Button";
 
@@ -31,10 +32,7 @@ function BasketItem({ data }) {
             <span className="text-gray-500 pr-2">تومان</span>
           </div>
         </div>
-        <Button
-          className="w-90 py-3 mx-auto block text-2xl"
-          type="submit"
-        >
+        <Button className="w-90 py-3 mx-auto block text-2xl" type="submit">
           ثبت و خرید نهایی
         </Button>
       </div>

@@ -43,7 +43,6 @@ const useCheckOtpMutation = () => {
             mobile,
             code
         })
-        console.log('data is:', res.data)
         return res.data
     }
 

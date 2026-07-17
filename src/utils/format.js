@@ -37,6 +37,9 @@ const formatCities = (city) => {
     }
     return cities[city] || city
 }
+
+
+
 // Format vehicle
 const formatVehicle = (vehicle) => {
     const vehicles = {

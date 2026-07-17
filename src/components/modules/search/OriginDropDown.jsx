@@ -33,7 +33,7 @@ function OriginDropDown({ tours, value, setValue }) {
         {value ? formatCities(value.name) : "مبدا"}
       </div>
       {isOpen ? (
-        <div className="absolute top-16 w-full border bg-white border-gray-300 rounded-lg">
+        <div className="absolute top-16 w-full border bg-white border-gray-300 rounded-lg z-50">
           <div className="bg-[#F8F8F8] rounded-t-lg pr-1">پرتردد</div>
           {origins.map((origin) => (
             <div

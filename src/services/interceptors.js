@@ -10,7 +10,6 @@ const getAccessToken = () => {
 // Request interceptor
 api.interceptors.request.use((config) => {
     const token = getAccessToken();
-    console.log('token:', token);
     
     if(token){
         config.headers.Authorization = `Bearer ${token}`

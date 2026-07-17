@@ -36,6 +36,7 @@ function AccountForm({ setIsEdit, setActiveTab }) {
       },
     });
   };
+
   return (
     <form onSubmit={handleSubmit(editEmailHandler)}>
       <div className="border border-gray-300 py-4 px-2 md:px-10 space-y-6 rounded-lg mt-7 md:mt-0">
@@ -49,10 +50,7 @@ function AccountForm({ setIsEdit, setActiveTab }) {
           </div>
           <div className="w-full flex items-center justify-between md:col-span-2 gap-4 mt-7 md:mt-0">
             <p className="hidden md:block">ایمیل:</p>
-            <Input
-              {...register("email")}
-              placeholder="ایمیل"
-            />
+            <Input {...register("email")} placeholder="ایمیل" />
             {errors.email && <p>{errors.email.message}</p>}
             <Button className="px-5 md:px-15 py-3.5" type="submit">
               تایید
