@@ -16,7 +16,7 @@ function ProfileSection({ setIsEdit }) {
   return (
     <div>
       {/* Show account info */}
-      <div className="border border-gray-300 py-4 px-10 space-y-6 rounded-lg">
+      <div className="border border-gray-300 py-4 px-10 space-y-6 rounded-lg mt-7 md:mt-0">
         <h3 className="text-lg">اطلاعات حساب کاربری</h3>
         <div className="flex flex-wrap md:grid md:grid-cols-2">
           <div className="w-full flex justify-between md:justify-normal">

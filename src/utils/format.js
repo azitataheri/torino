@@ -109,6 +109,22 @@ const formatToursStatus = (startDate, endDate) => {
     }
 }
 
+
+//Format transactions date
+ const formatTransactionDate = (date) => {
+  return new Intl.DateTimeFormat("fa-IR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  })
+    .format(new Date(date))
+    .replace(",", " -");
+};
+
+
 export {
     formatDate,
     formatCompleteDate,
@@ -118,5 +134,6 @@ export {
     formatPrice,
     formatCities,
     calculateDuration,
-    formatToursStatus
+    formatToursStatus,
+    formatTransactionDate
 }

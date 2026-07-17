@@ -9,7 +9,7 @@ function ToursSection() {
   console.log(usertours);
   
   return (
-    <div className="border border-gray-300 p-5 rounded-xl">
+    <div className="border border-gray-300 p-5 rounded-xl mt-7 md:mt-0">
       <UserToursList usertours={usertours}/>
     </div>
   )
